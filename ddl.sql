@@ -19,3 +19,11 @@ CREATE TABLE clientes (
   tipo_identificacion_id INTEGER,
   FOREIGN KEY (tipo_identificacion_id) REFERENCES tipo_identificacion(id)
 );
+
+CREATE TABLE clienteproductos (
+
+);
+
+CREATE TABLE productos (
+
+);

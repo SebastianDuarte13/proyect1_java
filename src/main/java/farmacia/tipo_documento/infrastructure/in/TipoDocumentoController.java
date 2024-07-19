@@ -9,30 +9,32 @@ import farmacia.cliente.infrastructure.in.ClienteController;
 
 public class TipoDocumentoController {
     private CreateTipoDocumentoUseCase createTipoDocumentoUseCase;
+    private ClienteController clienteController;
     private Scanner scanner;
 
-    public TipoDocumentoController(CreateTipoDocumentoUseCase createTipoDocumentoUseCase) {
+    public TipoDocumentoController(CreateTipoDocumentoUseCase createTipoDocumentoUseCase, ClienteController clienteController) {
         this.createTipoDocumentoUseCase = createTipoDocumentoUseCase;
+        this.clienteController = clienteController;
         this.scanner = new Scanner(System.in);
     }
 
     public void start() {
         while (true) {
             System.out.println("1. Añadir tipo documento");
-            System.out.println("2. añadir cliente");
+            System.out.println("2. Añadir cliente");
             System.out.println("3. Actualizar juego");
             System.out.println("4. Eliminar juego");
             System.out.println("5. Salir");
             System.out.print("Selecciona una opción: ");
-            
+
             int choice;
             try {
                 choice = scanner.nextInt();
-                scanner.nextLine(); 
+                scanner.nextLine();
             } catch (InputMismatchException e) {
-                scanner.next(); 
+                scanner.next();
                 System.out.println("Entrada no válida. Por favor, introduce un número.");
-                continue; 
+                continue;
             }
 
             switch (choice) {
@@ -40,7 +42,7 @@ public class TipoDocumentoController {
                     addtipe();
                     break;
                 case 2:
-                    //addcliente();
+                    clienteController.addcliente();
                     break;
                 case 3:
                     // Actualizar juego
@@ -71,7 +73,7 @@ public class TipoDocumentoController {
         try {
             createTipoDocumentoUseCase.execute(tipoDocumento);
             System.out.println("Tipo de documento agregado exitosamente!");
-        } catch (Exception e) { // Captura una excepción más general
+        } catch (Exception e) {
             System.out.println("Error al agregar tipo de documento: " + e.getMessage());
         }
     }

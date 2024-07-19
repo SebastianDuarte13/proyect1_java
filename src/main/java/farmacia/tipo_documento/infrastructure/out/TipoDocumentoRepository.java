@@ -13,7 +13,7 @@ public class TipoDocumentoRepository implements TipoDocumentoService{
     public void createTipoDocumento(TipoDocumento tipoDocumento) {
         String sql = "INSERT INTO tipo_identificacion (id, nom_tipo) VALUES (?, ?)";
         try (Connection connection = DatabaseConfig.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
+            PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, tipoDocumento.getId());
             statement.setString(2, tipoDocumento.getNombre());
             statement.executeUpdate();

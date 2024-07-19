@@ -3,7 +3,6 @@ package farmacia.cliente.infrastructure.in;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.sql.Date; // Asegúrate de importar java.sql.Date
 import java.util.Scanner;
 
 import farmacia.cliente.domain.entity.Cliente;
@@ -47,7 +46,7 @@ public class ClienteController {
             System.out.println("tipo_identificacion_id: ");
             int tipo_identificacion_id = Integer.parseInt(scanner.nextLine());
 
-            Cliente cliente = new Cliente();
+            Cliente cliente = new Cliente(tipo_identificacion_id);
             cliente.setNro_identificacion(nro_identificacion);
             cliente.setNombres(nombres);
             cliente.setApellidos(apellidos);
@@ -68,7 +67,7 @@ public class ClienteController {
         }
     }
 
-    private Date parseDate(String dateStr) {
+    private static Date parseDate(String dateStr) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         formatter.setLenient(false); // Asegúrate de que la fecha sea estricta
         try {
@@ -79,7 +78,7 @@ public class ClienteController {
         }
     }
 
-    private java.sql.Date convertToSqlDate(Date utilDate) {
+    private static java.sql.Date convertToSqlDate(Date utilDate) {
         return new java.sql.Date(utilDate.getTime());
     }
 }

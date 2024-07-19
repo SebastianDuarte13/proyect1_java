@@ -12,6 +12,6 @@ public class CreateClienteUseCase {
     }
 
     public void execute(Cliente cliente) {
-        clienteService.createCliente(clienteService);
+        clienteService.createCliente(cliente);
     }
 }
