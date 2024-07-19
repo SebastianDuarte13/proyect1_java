@@ -11,6 +11,6 @@ public class CreateTipoDocumentoUseCase {
     }
 
     public void execute(TipoDocumento tipoDocumento) {
-        tipoDocumentoService.createUser(tipoDocumento);
+        tipoDocumentoService.createTipoDocumento(tipoDocumento);
     }
 }
